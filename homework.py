@@ -48,8 +48,8 @@ class Training:
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
-        raise NotImplementedError(
-      'Определите калории в %s.' % (self.__class__.__name__))
+        raise NotImplementedError('Определите калории в %s.' %
+                                  (self.__class__.__name__))
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
@@ -95,9 +95,10 @@ class SportsWalking(Training):
 
     def get_spent_calories(self) -> float:
         return (
-            (self.CALORIES_MEAN_SPEED_MULTIPLIER * self.weight + (self.get_mean_speed()**2
-             // self.height) * self.CALORIES_MEAN_SPEED_SHIFT * self.weight)
-            * self.duration * self.MIN_IN_HOUR)
+            (self.CALORIES_MEAN_SPEED_MULTIPLIER * self.weight
+             + (self.get_mean_speed()**2 // self.height)
+             * self.CALORIES_MEAN_SPEED_SHIFT * self.weight) * self.duration
+            * self.MIN_IN_HOUR)
 
 
 class Swimming(Training):
@@ -124,7 +125,9 @@ class Swimming(Training):
         return speed
 
     def get_spent_calories(self) -> float:
-        calories = (self.get_mean_speed() + self.CALORIES_MEAN_SPEED_MULTIPLIER) * self.CALORIES_MEAN_SPEED_SHIFT * self.weight
+        calories = ((self.get_mean_speed()
+                    + self.CALORIES_MEAN_SPEED_MULTIPLIER)
+                    * self.CALORIES_MEAN_SPEED_SHIFT * self.weight)
         return calories
 
 
