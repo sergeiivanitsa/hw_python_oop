@@ -138,8 +138,7 @@ def read_package(workout_type: str, data: list) -> Training:
     }
     if workout_type not in read:
         raise ValueError
-    else:
-        return read[workout_type](*data)
+    return read[workout_type](*data)
 
 
 def main(training: Training) -> None:
